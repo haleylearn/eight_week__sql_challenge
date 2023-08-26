@@ -122,6 +122,7 @@ VALUES
 
 */
 -------------------------- A. Pizza Metrics ------------------------------------------
+
 -- QUESTION 1: How many pizzas were ordered?
 SELECT COUNT(order_id) AS total_orders FROM customer_orders;
 
@@ -228,3 +229,4 @@ FROM (
 ) x
 GROUP BY week_day
 ORDER BY COUNT(pizza_id) DESC, week_day ASC
+
