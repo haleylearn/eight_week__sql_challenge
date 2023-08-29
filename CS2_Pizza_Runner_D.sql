@@ -79,6 +79,4 @@ FROM customer_orders c
 JOIN get_standard_distance g
     ON c.order_id = g.order_id
 JOIN pizza_names p 
-    ON c.pizza_id = p.pizza_id
-
-
+    ON c.pizza_id = p.pizza_id;
