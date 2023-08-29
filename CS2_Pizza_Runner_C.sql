@@ -99,6 +99,7 @@ JOIN pizza_names p
 -- PAUSE because dont have data to test this
 
 -- QUESTION 6: What is the total quantity of each ingredient used in all delivered pizzas sorted by most frequent first?
+-- CAN USE -- QUESTION 2: What was the most commonly added extra?
 SELECT value_extras, COUNT(value_extras) AS cnt_ingredient
 FROM (
     SELECT TRIM(t1.value) AS value_extras
