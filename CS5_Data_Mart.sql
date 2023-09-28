@@ -474,3 +474,10 @@ FROM (
     GROUP BY region, platform, age_band, demographic, customer_type
 ) x2
 ORDER BY sales_after_12_week - sales_before_12_week;
+
+
+-- TRICKY NOTE:
+SELECT week_date, region, platform, segment, customer_type, transactions, sales
+INTO weekly_sales_dup_32 -- New table
+FROM weekly_sales;
+
