@@ -461,16 +461,16 @@ GROUP BY year_standard;
 -- QUESTION 4: Which areas of the business have the highest negative impact in sales metrics performance in 2020 for the 12 week before and after period?
 SELECT *, sales_after_12_week - sales_before_12_week AS sub_sales
 FROM (
-    SELECT region
+    SELECT region, platform, age_band, demographic, customer_type
         , SUM( CASE WHEN sub >= -12 AND sub < 0 THEN CAST(sales AS FLOAT) ELSE 0 END ) AS sales_before_12_week
         , SUM( CASE WHEN sub > 0 AND sub <= 12  THEN CAST(sales AS FLOAT) ELSE 0 END ) AS sales_after_12_week
     FROM (
-        SELECT week_date_standard, sales, year_standard, region
+        SELECT week_date_standard, sales, region, platform, age_band, demographic, customer_type
         , DATENAME(WEEK, week_date_standard) w1, DATENAME(WEEK, '2020-06-15') w2
         , CAST(DATENAME(WEEK, week_date_standard) AS INT)  - CAST(DATENAME(WEEK, '2020-06-15') AS INT) sub
         FROM weekly_sales
         WHERE year_standard = 2020
     ) x1
-    GROUP BY region
+    GROUP BY region, platform, age_band, demographic, customer_type
 ) x2
 ORDER BY sales_after_12_week - sales_before_12_week;
